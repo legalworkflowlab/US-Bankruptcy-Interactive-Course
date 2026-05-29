@@ -622,6 +622,47 @@
       color: #17324d;
       margin-bottom: 4px;
     }
+    .route-panel {
+      background:
+        linear-gradient(135deg, rgba(247,250,252,0.94), rgba(232,241,243,0.88)),
+        #fff;
+    }
+    .route-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .route-card {
+      border: 1px solid #cbd8df;
+      background: #fff;
+      border-radius: 8px;
+      padding: 15px;
+      min-height: 150px;
+    }
+    .route-card span {
+      display: inline-grid;
+      place-items: center;
+      min-width: 36px;
+      height: 28px;
+      padding: 0 8px;
+      border-radius: 999px;
+      background: #17324d;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .route-card strong {
+      display: block;
+      color: #17324d;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .route-card p {
+      margin: 0;
+      color: var(--muted);
+    }
     .quiz-box {
       display: grid;
       gap: 12px;
@@ -818,6 +859,17 @@
           </div>
         </section>
 
+        <section class="panel route-panel" id="course-route">
+    <h3>How to Move Through the Course</h3>
+    <p class="soft">A simple route for learners who are new to U.S. law or bankruptcy vocabulary.</p>
+    <div class="route-grid">
+      <div class="route-card"><span>01</span><strong>Learn the language</strong><p>Start with the terminology coach. Open five terms before each chapter.</p></div>
+      <div class="route-card"><span>02</span><strong>Read for the workflow</strong><p>Do not memorize every rule first. Ask what document, deadline, or review note the concept creates.</p></div>
+      <div class="route-card"><span>03</span><strong>Practice the handoff</strong><p>Turn every legal question into facts collected, documents missing, and attorney-review questions.</p></div>
+      <div class="route-card"><span>04</span><strong>Use local proof</strong><p>For statewise work, identify the court, local rules, forms, trustee expectations, and current exemption source.</p></div>
+    </div>
+  </section>
+
         <section class="panel disclaimer-panel">
           <h3>Review and Use Notices</h3>
           <p class="soft">These notes keep the course clean for review and help prevent the material from being used beyond its training purpose.</p>
@@ -980,7 +1032,7 @@
 
     <section class="panel guided">
       <h3>Learning Map</h3>
-      <p class="soft">Before reading, use this map to see what the chapter helps you do in practice.</p>
+      <p class="soft">Use this map as the chapter's compass: the legal idea, the document trail, and the practical task.</p>
       <ul><li>Explain bankruptcy as a federal legal process, not a private debt negotiation.</li><li>Identify the main participants in a bankruptcy case and what each one does.</li><li>Describe the ordinary life cycle of a consumer bankruptcy case.</li><li>Separate legal advice from supervised support work.</li></ul>
     </section>
 
@@ -1027,7 +1079,7 @@
 
     <section class="panel practice">
       <h3>Practice Assignment</h3>
-      <p class="soft">Use these as workbook tasks. A trainer or attorney reviewer can grade them using the capstone rubric.</p>
+      <p class="soft">Treat these as small file-room drills: short, practical, and reviewable.</p>
       <ul><li>Draw the life cycle of a Chapter 7 case and a Chapter 13 case on one page.</li><li>Write a safe intake note for a client who asks: can I file now or wait until after payday?</li><li>Make a vocabulary list of 25 bankruptcy terms from this chapter and define them in your own words.</li></ul>
     </section>
 
@@ -1085,7 +1137,7 @@
 
     <section class="panel guided">
       <h3>Learning Map</h3>
-      <p class="soft">Before reading, use this map to see what the chapter helps you do in practice.</p>
+      <p class="soft">Read these outcomes first so the chapter feels like a workflow, not a wall of law.</p>
       <ul><li>Identify the major sources used in bankruptcy practice.</li><li>Read a statute by breaking it into elements, definitions, exceptions, and consequences.</li><li>Use IRAC to organize a support memo without giving legal advice.</li><li>Understand why local rules and judge procedures matter.</li></ul>
     </section>
 
@@ -1132,7 +1184,7 @@
 
     <section class="panel practice">
       <h3>Practice Assignment</h3>
-      <p class="soft">Use these as workbook tasks. A trainer or attorney reviewer can grade them using the capstone rubric.</p>
+      <p class="soft">Complete these after the scenario; they turn the reading into work product.</p>
       <ul><li>Read 11 U.S.C. sec. 362 and list five things it may stop and three things that require attorney review.</li><li>Brief one bankruptcy case selected by the trainer using facts, issue, rule, holding, and practice takeaway.</li><li>Create a source hierarchy chart for your future bankruptcy work.</li></ul>
     </section>
 
@@ -1190,7 +1242,7 @@
 
     <section class="panel guided">
       <h3>Learning Map</h3>
-      <p class="soft">Before reading, use this map to see what the chapter helps you do in practice.</p>
+      <p class="soft">This map shows what to notice when the same issue appears in a real file.</p>
       <ul><li>Distinguish Chapter 7, Chapter 11, Chapter 13, and Subchapter V at a practical level.</li><li>Understand basic eligibility concepts without making eligibility decisions.</li><li>Identify voluntary, joint, and involuntary case concepts.</li><li>Track credit counseling and debtor education requirements.</li></ul>
     </section>
 
@@ -1237,7 +1289,7 @@
 
     <section class="panel practice">
       <h3>Practice Assignment</h3>
-      <p class="soft">Use these as workbook tasks. A trainer or attorney reviewer can grade them using the capstone rubric.</p>
+      <p class="soft">Use these tasks to practice spotting facts, missing documents, and review questions.</p>
       <ul><li>Prepare a neutral chapter screening intake form that collects facts but gives no recommendations.</li><li>Compare Chapter 7, 13, and 11 in a one-page table.</li><li>Draft an escalation note for missing credit counseling on the day before a foreclosure sale.</li></ul>
     </section>
 
@@ -1295,7 +1347,7 @@
 
     <section class="panel guided">
       <h3>Learning Map</h3>
-      <p class="soft">Before reading, use this map to see what the chapter helps you do in practice.</p>
+      <p class="soft">Keep these outcomes nearby; they become the checklist for the chapter's practice work.</p>
       <ul><li>Explain the bankruptcy estate in practical language.</li><li>Connect assets to Schedule A/B and exemptions to Schedule C.</li><li>Identify valuation, ownership, lien, and transfer issues.</li><li>Prepare an asset review log for attorney review.</li></ul>
     </section>
 
@@ -1342,7 +1394,7 @@
 
     <section class="panel practice">
       <h3>Practice Assignment</h3>
-      <p class="soft">Use these as workbook tasks. A trainer or attorney reviewer can grade them using the capstone rubric.</p>
+      <p class="soft">These exercises are designed for a trainer, supervisor, or attorney reviewer to check quickly.</p>
       <ul><li>Build an asset review worksheet for a fictional debtor with a home, car, retirement account, side business, tax refund, and pending injury claim.</li><li>Draft a missing information request for asset values without suggesting exemption outcomes.</li><li>Identify ten places in ordinary documents where hidden assets may appear.</li></ul>
     </section>
 
@@ -1400,7 +1452,7 @@
 
     <section class="panel guided">
       <h3>Learning Map</h3>
-      <p class="soft">Before reading, use this map to see what the chapter helps you do in practice.</p>
+      <p class="soft">Start here to see how the chapter moves from concept to paralegal/BPO action.</p>
       <ul><li>Explain the automatic stay and why it is central to bankruptcy practice.</li><li>Identify urgent collection events that require immediate escalation.</li><li>Understand that the stay has exceptions and repeat-filing limits.</li><li>Prepare emergency filing support without promising legal outcomes.</li></ul>
     </section>
 
@@ -1447,7 +1499,7 @@
 
     <section class="panel practice">
       <h3>Practice Assignment</h3>
-      <p class="soft">Use these as workbook tasks. A trainer or attorney reviewer can grade them using the capstone rubric.</p>
+      <p class="soft">Finish with these tasks to make the chapter stick beyond the quiz.</p>
       <ul><li>Create an emergency foreclosure intake checklist.</li><li>Summarize a sample motion for relief from stay in one page.</li><li>Write a safe internal note for a client asking: If I file today, can the lender still sell my house?</li></ul>
     </section>
 
@@ -1505,7 +1557,7 @@
 
     <section class="panel guided">
       <h3>Learning Map</h3>
-      <p class="soft">Before reading, use this map to see what the chapter helps you do in practice.</p>
+      <p class="soft">Use this map as the chapter's compass: the legal idea, the document trail, and the practical task.</p>
       <ul><li>Classify creditor information for schedules and claims review.</li><li>Distinguish secured, priority unsecured, and general unsecured debts.</li><li>Understand the proof of claim process.</li><li>Track claims deadlines and objections.</li></ul>
     </section>
 
@@ -1552,7 +1604,7 @@
 
     <section class="panel practice">
       <h3>Practice Assignment</h3>
-      <p class="soft">Use these as workbook tasks. A trainer or attorney reviewer can grade them using the capstone rubric.</p>
+      <p class="soft">Treat these as small file-room drills: short, practical, and reviewable.</p>
       <ul><li>Prepare a creditor classification worksheet from ten sample debts.</li><li>Review a sample proof of claim and identify the amount, classification, attachments, and objections to flag.</li><li>Create a returned-mail escalation SOP.</li></ul>
     </section>
 
@@ -1610,7 +1662,7 @@
 
     <section class="panel guided">
       <h3>Learning Map</h3>
-      <p class="soft">Before reading, use this map to see what the chapter helps you do in practice.</p>
+      <p class="soft">Read these outcomes first so the chapter feels like a workflow, not a wall of law.</p>
       <ul><li>Understand why income and expense accuracy matters.</li><li>Connect pay records, tax returns, bank statements, and business records to schedules.</li><li>Explain the means test as a data collection and attorney review process.</li><li>Identify inconsistencies that require follow-up.</li></ul>
     </section>
 
@@ -1657,7 +1709,7 @@
 
     <section class="panel practice">
       <h3>Practice Assignment</h3>
-      <p class="soft">Use these as workbook tasks. A trainer or attorney reviewer can grade them using the capstone rubric.</p>
+      <p class="soft">Complete these after the scenario; they turn the reading into work product.</p>
       <ul><li>Use sample pay stubs to create a six-month gross income worksheet.</li><li>Review a bank statement and list unexplained deposits.</li><li>Draft five attorney-review questions about inconsistent income and expenses.</li></ul>
     </section>
 
@@ -1715,7 +1767,7 @@
 
     <section class="panel guided">
       <h3>Learning Map</h3>
-      <p class="soft">Before reading, use this map to see what the chapter helps you do in practice.</p>
+      <p class="soft">This map shows what to notice when the same issue appears in a real file.</p>
       <ul><li>Follow a Chapter 7 consumer workflow from intake to closing.</li><li>Understand no-asset and asset case concepts.</li><li>Prepare trustee document support and 341 meeting support.</li><li>Track discharge and closing requirements.</li></ul>
     </section>
 
@@ -1762,7 +1814,7 @@
 
     <section class="panel practice">
       <h3>Practice Assignment</h3>
-      <p class="soft">Use these as workbook tasks. A trainer or attorney reviewer can grade them using the capstone rubric.</p>
+      <p class="soft">Use these tasks to practice spotting facts, missing documents, and review questions.</p>
       <ul><li>Create a Chapter 7 timeline with 15 events from intake to closing.</li><li>Prepare a trustee document request tracker.</li><li>Write safe client instructions for uploading bank statements, without giving testimony advice.</li></ul>
     </section>
 
@@ -1820,7 +1872,7 @@
 
     <section class="panel guided">
       <h3>Learning Map</h3>
-      <p class="soft">Before reading, use this map to see what the chapter helps you do in practice.</p>
+      <p class="soft">Keep these outcomes nearby; they become the checklist for the chapter's practice work.</p>
       <ul><li>Explain the practical purpose of a Chapter 13 plan.</li><li>Identify plan data needed for secured, priority, and unsecured claims.</li><li>Track confirmation, claims, trustee objections, and plan modifications.</li><li>Support postconfirmation administration.</li></ul>
     </section>
 
@@ -1867,7 +1919,7 @@
 
     <section class="panel practice">
       <h3>Practice Assignment</h3>
-      <p class="soft">Use these as workbook tasks. A trainer or attorney reviewer can grade them using the capstone rubric.</p>
+      <p class="soft">These exercises are designed for a trainer, supervisor, or attorney reviewer to check quickly.</p>
       <ul><li>Build a Chapter 13 plan data packet from sample mortgage, vehicle, tax, and income records.</li><li>Summarize a trustee objection in five bullet points for attorney review.</li><li>Design a postconfirmation monitoring checklist.</li></ul>
     </section>
 
@@ -1925,7 +1977,7 @@
 
     <section class="panel guided">
       <h3>Learning Map</h3>
-      <p class="soft">Before reading, use this map to see what the chapter helps you do in practice.</p>
+      <p class="soft">Start here to see how the chapter moves from concept to paralegal/BPO action.</p>
       <ul><li>Explain Chapter 11 reorganization in practical terms.</li><li>Identify first-day motions and business debtor documents.</li><li>Understand debtor-in-possession concepts.</li><li>Support Subchapter V case organization.</li></ul>
     </section>
 
@@ -1972,7 +2024,7 @@
 
     <section class="panel practice">
       <h3>Practice Assignment</h3>
-      <p class="soft">Use these as workbook tasks. A trainer or attorney reviewer can grade them using the capstone rubric.</p>
+      <p class="soft">Finish with these tasks to make the chapter stick beyond the quiz.</p>
       <ul><li>Create a Chapter 11 first-day document request list.</li><li>Prepare a contract and lease tracker for a fictional small business.</li><li>Summarize what information belongs in a monthly operating report package.</li></ul>
     </section>
 
@@ -2030,7 +2082,7 @@
 
     <section class="panel guided">
       <h3>Learning Map</h3>
-      <p class="soft">Before reading, use this map to see what the chapter helps you do in practice.</p>
+      <p class="soft">Use this map as the chapter's compass: the legal idea, the document trail, and the practical task.</p>
       <ul><li>Explain discharge carefully and accurately.</li><li>Recognize debts that require dischargeability review.</li><li>Understand reaffirmation as a high-risk postfiling issue.</li><li>Track discharge readiness without giving legal advice.</li></ul>
     </section>
 
@@ -2077,7 +2129,7 @@
 
     <section class="panel practice">
       <h3>Practice Assignment</h3>
-      <p class="soft">Use these as workbook tasks. A trainer or attorney reviewer can grade them using the capstone rubric.</p>
+      <p class="soft">Treat these as small file-room drills: short, practical, and reviewable.</p>
       <ul><li>Prepare a discharge readiness checklist.</li><li>Rewrite five unsafe discharge statements into safe administrative statements.</li><li>Summarize the difference between discharge and lien release.</li></ul>
     </section>
 
@@ -2135,7 +2187,7 @@
 
     <section class="panel guided">
       <h3>Learning Map</h3>
-      <p class="soft">Before reading, use this map to see what the chapter helps you do in practice.</p>
+      <p class="soft">Read these outcomes first so the chapter feels like a workflow, not a wall of law.</p>
       <ul><li>Distinguish motions, contested matters, and adversary proceedings.</li><li>Understand common bankruptcy litigation types.</li><li>Support avoidance action document review.</li><li>Track litigation deadlines and service.</li></ul>
     </section>
 
@@ -2182,7 +2234,7 @@
 
     <section class="panel practice">
       <h3>Practice Assignment</h3>
-      <p class="soft">Use these as workbook tasks. A trainer or attorney reviewer can grade them using the capstone rubric.</p>
+      <p class="soft">Complete these after the scenario; they turn the reading into work product.</p>
       <ul><li>Summarize a sample motion for relief from stay.</li><li>Build an adversary proceeding calendar from a sample complaint and summons.</li><li>Prepare a transfer timeline from a fictional bank statement.</li></ul>
     </section>
 
@@ -2240,7 +2292,7 @@
 
     <section class="panel guided">
       <h3>Learning Map</h3>
-      <p class="soft">Before reading, use this map to see what the chapter helps you do in practice.</p>
+      <p class="soft">This map shows what to notice when the same issue appears in a real file.</p>
       <ul><li>Identify the major consumer bankruptcy forms.</li><li>Map source documents to form fields.</li><li>Run consistency and completeness checks.</li><li>Prepare attorney-review notes for unresolved issues.</li></ul>
     </section>
 
@@ -2287,7 +2339,7 @@
 
     <section class="panel practice">
       <h3>Practice Assignment</h3>
-      <p class="soft">Use these as workbook tasks. A trainer or attorney reviewer can grade them using the capstone rubric.</p>
+      <p class="soft">Use these tasks to practice spotting facts, missing documents, and review questions.</p>
       <ul><li>Create a source-to-form map for Schedules A/B, D, E/F, I, J, and SOFA.</li><li>Perform a 50-point QC review on a sample petition.</li><li>Write five attorney-review notes from sample inconsistencies.</li></ul>
     </section>
 
@@ -2345,7 +2397,7 @@
 
     <section class="panel guided">
       <h3>Learning Map</h3>
-      <p class="soft">Before reading, use this map to see what the chapter helps you do in practice.</p>
+      <p class="soft">Keep these outcomes nearby; they become the checklist for the chapter's practice work.</p>
       <ul><li>Read a bankruptcy docket for practical action items.</li><li>Extract deadlines from notices, motions, orders, and claims.</li><li>Understand PACER and CM/ECF access discipline.</li><li>Build a docket review SOP.</li></ul>
     </section>
 
@@ -2392,7 +2444,7 @@
 
     <section class="panel practice">
       <h3>Practice Assignment</h3>
-      <p class="soft">Use these as workbook tasks. A trainer or attorney reviewer can grade them using the capstone rubric.</p>
+      <p class="soft">These exercises are designed for a trainer, supervisor, or attorney reviewer to check quickly.</p>
       <ul><li>Create a docket review SOP for a BPO team.</li><li>Turn ten sample docket entries into a deadline/action spreadsheet.</li><li>Draft a naming convention for downloaded bankruptcy PDFs.</li></ul>
     </section>
 
@@ -2450,7 +2502,7 @@
 
     <section class="panel guided">
       <h3>Learning Map</h3>
-      <p class="soft">Before reading, use this map to see what the chapter helps you do in practice.</p>
+      <p class="soft">Start here to see how the chapter moves from concept to paralegal/BPO action.</p>
       <ul><li>Recognize unauthorized practice of law risks.</li><li>Use safe communication boundaries with clients.</li><li>Protect confidential and sensitive information.</li><li>Escalate conflicts, privilege, and data incidents.</li></ul>
     </section>
 
@@ -2497,7 +2549,7 @@
 
     <section class="panel practice">
       <h3>Practice Assignment</h3>
-      <p class="soft">Use these as workbook tasks. A trainer or attorney reviewer can grade them using the capstone rubric.</p>
+      <p class="soft">Finish with these tasks to make the chapter stick beyond the quiz.</p>
       <ul><li>Rewrite ten risky client statements into safe administrative responses.</li><li>Create a redaction checklist for bankruptcy filings.</li><li>Prepare a one-page incident report for a fictional misdirected tax return.</li></ul>
     </section>
 
@@ -2555,7 +2607,7 @@
 
     <section class="panel guided">
       <h3>Learning Map</h3>
-      <p class="soft">Before reading, use this map to see what the chapter helps you do in practice.</p>
+      <p class="soft">Use this map as the chapter's compass: the legal idea, the document trail, and the practical task.</p>
       <ul><li>Apply the full course to a simulated case file.</li><li>Prepare a document index, issue log, creditor worksheet, asset log, and attorney memo.</li><li>Identify legal questions without answering them.</li><li>Demonstrate readiness for supervised bankruptcy support work.</li></ul>
     </section>
 
@@ -2602,7 +2654,7 @@
 
     <section class="panel practice">
       <h3>Practice Assignment</h3>
-      <p class="soft">Use these as workbook tasks. A trainer or attorney reviewer can grade them using the capstone rubric.</p>
+      <p class="soft">Treat these as small file-room drills: short, practical, and reviewable.</p>
       <ul><li>Complete the full capstone package.</li><li>Take the final exam using the answer key only after completion.</li><li>Write a reflection identifying three SOP improvements that would prevent errors in this file.</li></ul>
     </section>
 
@@ -2660,7 +2712,7 @@
 
     <section class="panel guided">
       <h3>Learning Map</h3>
-      <p class="soft">Before reading, use this map to see what the chapter helps you do in practice.</p>
+      <p class="soft">Read these outcomes first so the chapter feels like a workflow, not a wall of law.</p>
       <ul><li>Explain the difference between federal law, state law, local court rules, and court orders.</li><li>Place bankruptcy courts inside the federal court system.</li><li>Understand how state law still matters inside a federal bankruptcy case.</li><li>Identify which source controls a practical support task.</li></ul>
     </section>
 
@@ -2707,7 +2759,7 @@
 
     <section class="panel practice">
       <h3>Practice Assignment</h3>
-      <p class="soft">Use these as workbook tasks. A trainer or attorney reviewer can grade them using the capstone rubric.</p>
+      <p class="soft">Complete these after the scenario; they turn the reading into work product.</p>
       <ul><li>Pick one state and identify its bankruptcy district or districts.</li><li>Find that court's local rules page and list five items that could affect a paralegal or BPO task.</li><li>Write a one-page memo explaining why bankruptcy is federal but still affected by state law.</li></ul>
     </section>
 
@@ -2765,7 +2817,7 @@
 
     <section class="panel guided">
       <h3>Learning Map</h3>
-      <p class="soft">Before reading, use this map to see what the chapter helps you do in practice.</p>
+      <p class="soft">This map shows what to notice when the same issue appears in a real file.</p>
       <ul><li>Read the Bankruptcy Code as an operating system for a case.</li><li>Connect Code sections to forms, deadlines, documents, and workflow tasks.</li><li>Explain how federal bankruptcy amounts, means testing, and exemptions are updated or localized.</li><li>Build a source-to-task workflow for Code-driven production.</li></ul>
     </section>
 
@@ -2812,7 +2864,7 @@
 
     <section class="panel practice">
       <h3>Practice Assignment</h3>
-      <p class="soft">Use these as workbook tasks. A trainer or attorney reviewer can grade them using the capstone rubric.</p>
+      <p class="soft">Use these tasks to practice spotting facts, missing documents, and review questions.</p>
       <ul><li>Build a Code-to-workflow map for sections 362, 522, and 541.</li><li>Find the current U.S. Trustee median income table and record the effective date.</li><li>Prepare an attorney-review note for a debtor who moved states within two years before filing.</li></ul>
     </section>
 
@@ -2870,7 +2922,7 @@
 
     <section class="panel guided">
       <h3>Learning Map</h3>
-      <p class="soft">Before reading, use this map to see what the chapter helps you do in practice.</p>
+      <p class="soft">Keep these outcomes nearby; they become the checklist for the chapter's practice work.</p>
       <ul><li>Use a state and district map to start jurisdiction-specific bankruptcy research.</li><li>Identify where local rules, local forms, trustee requirements, and state exemptions enter the workflow.</li><li>Build a state exemption research worksheet without giving legal advice.</li><li>Understand why statewise bankruptcy training needs to be updated continuously.</li></ul>
     </section>
 
@@ -2917,7 +2969,7 @@
 
     <section class="panel practice">
       <h3>Practice Assignment</h3>
-      <p class="soft">Use these as workbook tasks. A trainer or attorney reviewer can grade them using the capstone rubric.</p>
+      <p class="soft">These exercises are designed for a trainer, supervisor, or attorney reviewer to check quickly.</p>
       <ul><li>Choose three states and create a one-page jurisdiction profile for each.</li><li>For one state, identify homestead, vehicle, wildcard, wages, tools of trade, retirement, and public benefits as research categories without choosing legal treatment.</li><li>Write an SOP update log showing source link, date reviewed, reviewer, and next review date.</li></ul>
     </section>
 
