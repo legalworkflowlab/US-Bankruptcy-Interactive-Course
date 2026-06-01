@@ -789,6 +789,23 @@ function NativeModuleWorkspace({ completed, toggleCompleted }) {
   const moduleSources = sources.filter((source) => module.sources.includes(source.title));
   const isComplete = completed.includes(module.chapter);
 
+  useEffect(() => {
+    const syncModuleFromHash = () => {
+      const match = window.location.hash.match(/^#native-module-(\d+)$/);
+      if (!match) return;
+
+      const chapterNumber = Number(match[1]);
+      if (!nativeModules.some((item) => item.chapter === chapterNumber)) return;
+
+      setActiveChapter(chapterNumber);
+      window.setTimeout(() => scrollToSection(`native-module-${chapterNumber}`), 0);
+    };
+
+    syncModuleFromHash();
+    window.addEventListener("hashchange", syncModuleFromHash);
+    return () => window.removeEventListener("hashchange", syncModuleFromHash);
+  }, [setActiveChapter]);
+
   const selectModule = (chapterNumber) => {
     setActiveChapter(chapterNumber);
     setBoundaryChoice(null);
