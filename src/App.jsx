@@ -226,6 +226,42 @@ function Hero({ nextChapter }) {
   );
 }
 
+const journeySteps = [
+  ["01", "Landing", "Understand the promise"],
+  ["02", "Choose path", "Start from your goal"],
+  ["03", "Demo mode", "Practice one handoff"],
+  ["04", "Chapter map", "Pick the right depth"],
+  ["05", "Module", "Read the full lesson"],
+  ["06", "Practice", "Work the scenario"],
+  ["07", "Notes and progress", "Track the learning file"],
+  ["08", "Feedback", "Shape the next simulation"],
+];
+
+function JourneyRail() {
+  return (
+    <section className="journey-rail" aria-label="Learning product journey">
+      <div className="mx-auto max-w-7xl px-5 py-6 sm:px-8">
+        <div className="flex items-center justify-between gap-5">
+          <div>
+            <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-teal-700">Guided learner journey</p>
+            <p className="mt-1 text-sm font-bold text-slate-600">A clear route into the detailed course reader</p>
+          </div>
+          <Flag className="hidden text-teal-700 sm:block" size={21} aria-hidden="true" />
+        </div>
+        <ol className="journey-steps mt-5">
+          {journeySteps.map(([number, title, description]) => (
+            <li key={number}>
+              <span>{number}</span>
+              <strong>{title}</strong>
+              <small>{description}</small>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}
+
 function VideoTour() {
   return (
     <section id="video-tour" className="section scroll-mt-28 bg-white">
@@ -272,12 +308,10 @@ function VideoTour() {
   );
 }
 
-function EntryPaths() {
+function EntryPaths({ selectedPath, setSelectedPath }) {
   const handlePath = (id) => {
-    if (id === "demo") scrollToSection("demo");
-    else if (id === "review") scrollToSection("review");
-    else if (id === "workflow") scrollToSection("dashboard");
-    else scrollToSection("chapters");
+    setSelectedPath(id);
+    window.setTimeout(() => scrollToSection("path-launchpad"), 0);
   };
 
   return (
@@ -300,7 +334,7 @@ function EntryPaths() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ delay: index * 0.06 }}
-                className="path-card"
+                className={`path-card ${selectedPath === path.id ? "is-selected" : ""}`}
               >
                 <span className="path-icon"><Icon size={20} /></span>
                 <p className="mt-5 text-xs font-extrabold uppercase tracking-[0.16em] text-teal-700">{path.eyebrow}</p>
@@ -313,6 +347,53 @@ function EntryPaths() {
             );
           })}
         </div>
+      </div>
+    </section>
+  );
+}
+
+function PathLaunchpad({ selectedPath }) {
+  const path = entryPaths.find((item) => item.id === selectedPath) ?? entryPaths[0];
+  const recommendedChapter = chapters.find((chapter) => chapter.number === path.chapter) ?? chapters[0];
+  const PathIcon = pathIcons[path.id];
+
+  return (
+    <section id="path-launchpad" className="scroll-mt-28 bg-[#f4f8f7] pb-20">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <motion.div
+          key={path.id}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="launchpad"
+        >
+          <div className="launchpad-intro">
+            <span className="path-icon"><PathIcon size={20} /></span>
+            <p className="mt-5 text-xs font-extrabold uppercase tracking-[0.16em] text-teal-700">Selected path</p>
+            <h2 className="mt-2 text-3xl font-semibold leading-tight text-slate-900">{path.title}</h2>
+            <p className="mt-3 max-w-xl leading-7 text-slate-600">{path.mission}</p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a className="button button-dark" href={`#${path.destination}`}>
+                {path.destinationLabel} <ArrowRight size={16} />
+              </a>
+              <a className="button button-light" href={chapterUrl(recommendedChapter)}>
+                Open recommended module <ExternalLink size={15} />
+              </a>
+            </div>
+          </div>
+          <div className="launchpad-plan">
+            <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-teal-700">Your first mission</p>
+            <h3 className="mt-2 text-xl font-semibold text-slate-900">{path.focus}</h3>
+            <ol className="mt-5 grid gap-3">
+              {path.steps.map((step, index) => (
+                <li className="launchpad-step" key={step}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <strong>{step}</strong>
+                </li>
+              ))}
+            </ol>
+            <p className="mt-5 text-sm font-bold text-slate-500">Recommended start: Chapter {recommendedChapter.number}</p>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -638,6 +719,7 @@ function LegalNotice() {
 function App() {
   const [learnerName, setLearnerName] = usePersistentState("bwl-learner-name", "");
   const [completed, setCompleted] = usePersistentState("bwl-completed-chapters", []);
+  const [selectedPath, setSelectedPath] = usePersistentState("bwl-selected-path", "new");
   const nextChapter = chapters.find((chapter) => !completed.includes(chapter.number)) ?? chapters[0];
 
   const toggleCompleted = (number) => {
@@ -649,9 +731,11 @@ function App() {
       <Header nextChapter={nextChapter} />
       <main>
         <Hero nextChapter={nextChapter} />
-        <EntryPaths />
-        <VideoTour />
+        <JourneyRail />
+        <EntryPaths selectedPath={selectedPath} setSelectedPath={setSelectedPath} />
+        <PathLaunchpad selectedPath={selectedPath} />
         <Dashboard learnerName={learnerName} setLearnerName={setLearnerName} completed={completed} toggleCompleted={toggleCompleted} nextChapter={nextChapter} />
+        <VideoTour />
         <Demo />
         <ChapterDashboard completed={completed} toggleCompleted={toggleCompleted} />
         <SourceLocker />

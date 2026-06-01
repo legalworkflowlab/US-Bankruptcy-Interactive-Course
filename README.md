@@ -4,6 +4,12 @@ A guided product shell for the U.S. Bankruptcy Interactive Course.
 
 The landing experience includes a silent, captioned 25-second product tour and an interactive 15-minute reviewer demo.
 
+The front layer follows a guided journey:
+
+```text
+Landing -> Choose Path -> Demo Mode -> Chapter Dashboard -> Module -> Practice -> Notes / Progress -> Feedback
+```
+
 ## Development
 
 ```bash
