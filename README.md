@@ -28,7 +28,7 @@ base: "/US-Bankruptcy-Interactive-Course/"
 
 The GitHub Pages workflow builds the Vite app and deploys `dist/` when changes reach `main`.
 
-## Preserved legacy course
+## Preserved Full Course Reader
 
 The original single-file course book is preserved intact at:
 

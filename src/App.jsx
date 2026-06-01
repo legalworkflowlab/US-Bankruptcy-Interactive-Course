@@ -18,7 +18,9 @@ import {
   GraduationCap,
   Landmark,
   Library,
+  ListChecks,
   Menu,
+  NotebookPen,
   PlayCircle,
   Search,
   ShieldAlert,
@@ -31,6 +33,7 @@ import {
   chapters,
   entryPaths,
   groupOrder,
+  nativeModules,
   reviewerPrompts,
   sources,
 } from "./data/courseData";
@@ -562,9 +565,9 @@ function ChapterDashboard({ completed, toggleCompleted }) {
         <div className="section-heading">
           <div>
             <p className="kicker">19-chapter course</p>
-            <h2>Open the depth when you need it.</h2>
+            <h2>Choose a native module or open the full reader.</h2>
           </div>
-          <p>The original interactive reader remains intact. Use this dashboard to find the right chapter without facing one long page first.</p>
+          <p>Five priority chapters now open as training-platform modules. Every chapter remains available in the Full Course Reader.</p>
         </div>
 
         <div className="mt-8 grid gap-4 lg:grid-cols-[1fr_340px]">
@@ -585,6 +588,7 @@ function ChapterDashboard({ completed, toggleCompleted }) {
         <div className="mt-7 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {filteredChapters.map((chapter) => {
             const complete = completed.includes(chapter.number);
+            const hasNativeModule = nativeModules.some((module) => module.chapter === chapter.number);
             const GroupIcon = groupIcons[chapter.group];
             return (
               <article className="chapter-card" key={chapter.id}>
@@ -608,14 +612,198 @@ function ChapterDashboard({ completed, toggleCompleted }) {
                 <div className="mt-auto border-t border-slate-200 pt-4">
                   <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Skill focus</p>
                   <p className="mt-1 text-sm font-bold text-slate-700">{chapter.skill}</p>
-                  <a className="mt-4 flex items-center gap-2 text-sm font-extrabold text-[#0c6770]" href={chapterUrl(chapter)}>
-                    Open chapter <ExternalLink size={15} />
-                  </a>
+                  {hasNativeModule ? (
+                    <a className="mt-4 flex items-center gap-2 text-sm font-extrabold text-[#0c6770]" href={`#native-module-${chapter.number}`}>
+                      Open native module <ArrowRight size={15} />
+                    </a>
+                  ) : (
+                    <a className="mt-4 flex items-center gap-2 text-sm font-extrabold text-[#0c6770]" href={chapterUrl(chapter)}>
+                      Open in Full Course Reader <ExternalLink size={15} />
+                    </a>
+                  )}
                 </div>
               </article>
             );
           })}
         </div>
+      </div>
+    </section>
+  );
+}
+
+function AnswerSet({ legend, options, selected, setSelected }) {
+  return (
+    <fieldset className="mt-4 grid gap-3">
+      <legend className="font-semibold text-slate-900">{legend}</legend>
+      {options.map((option, index) => (
+        <label className={`module-choice ${selected === index ? "is-selected" : ""}`} key={option}>
+          <input
+            type="radio"
+            name={legend}
+            checked={selected === index}
+            onChange={() => setSelected(index)}
+          />
+          <span>{option}</span>
+        </label>
+      ))}
+    </fieldset>
+  );
+}
+
+function NativeModuleWorkspace({ completed, toggleCompleted }) {
+  const [activeChapter, setActiveChapter] = usePersistentState("bwl-native-module", 1);
+  const [boundaryChoice, setBoundaryChoice] = useState(null);
+  const [knowledgeChoice, setKnowledgeChoice] = useState(null);
+  const [notes, setNotes] = usePersistentState("bwl-native-module-notes", {});
+  const module = nativeModules.find((item) => item.chapter === activeChapter) ?? nativeModules[0];
+  const chapter = chapters.find((item) => item.number === module.chapter);
+  const moduleSources = sources.filter((source) => module.sources.includes(source.title));
+  const isComplete = completed.includes(module.chapter);
+
+  const selectModule = (chapterNumber) => {
+    setActiveChapter(chapterNumber);
+    setBoundaryChoice(null);
+    setKnowledgeChoice(null);
+    window.setTimeout(() => scrollToSection(`native-module-${chapterNumber}`), 0);
+  };
+
+  return (
+    <section id="native-modules" className="section scroll-mt-28 bg-white">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="section-heading">
+          <div>
+            <p className="kicker">Native training modules</p>
+            <h2>Work inside the platform before opening the reader.</h2>
+          </div>
+          <p>Start with the five priority modules. The Full Course Reader remains available for the complete chapter experience.</p>
+        </div>
+
+        <div className="mt-8 flex gap-2 overflow-x-auto pb-2" aria-label="Priority native modules">
+          {nativeModules.map((item) => (
+            <button
+              className={`module-tab ${module.chapter === item.chapter ? "is-active" : ""}`}
+              key={item.chapter}
+              type="button"
+              onClick={() => selectModule(item.chapter)}
+            >
+              <span>{String(item.chapter).padStart(2, "0")}</span>
+              {item.shortTitle}
+            </button>
+          ))}
+        </div>
+
+        <article id={`native-module-${module.chapter}`} className="module-workspace scroll-mt-28">
+          <header className="module-header">
+            <div>
+              <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#9ce2d6]">Native module · Chapter {module.chapter}</p>
+              <h2 className="mt-2 text-3xl font-semibold text-white">{chapter.title}</h2>
+              <p className="mt-3 max-w-3xl leading-7 text-slate-200">{module.summary}</p>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <button className={`button ${isComplete ? "button-accent" : "button-light"}`} type="button" onClick={() => toggleCompleted(module.chapter)}>
+                <CheckCircle2 size={17} /> {isComplete ? "Marked complete" : "Mark module complete"}
+              </button>
+              <a className="button button-ghost-light" href={chapterUrl(chapter)}>
+                <BookOpen size={17} /> Full Course Reader
+              </a>
+            </div>
+          </header>
+
+          <div className="module-grid">
+            <section className="module-section">
+              <p className="module-label">Why this matters in support work</p>
+              <p className="mt-3 leading-7 text-slate-700">{module.whyItMatters}</p>
+            </section>
+            <section className="module-section">
+              <p className="module-label">Key learning outcomes</p>
+              <ul className="mt-3 grid gap-2">
+                {module.outcomes.map((outcome) => <li className="module-list-item" key={outcome}><Check size={15} /> {outcome}</li>)}
+              </ul>
+            </section>
+          </div>
+
+          <section className="module-section border-t border-slate-200">
+            <p className="module-label">Terminology coach</p>
+            <div className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+              {module.terminology.map(([term, meaning, example]) => (
+                <article className="term-card-native" key={term}>
+                  <strong>{term}</strong>
+                  <p>{meaning}</p>
+                  <small>{example}</small>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="module-section border-t border-slate-200">
+            <p className="module-label">Practical workflow map</p>
+            <ol className="workflow-map mt-4">
+              {module.workflow.map((step, index) => (
+                <li key={step}><span>{String(index + 1).padStart(2, "0")}</span><strong>{step}</strong></li>
+              ))}
+            </ol>
+          </section>
+
+          <div className="module-grid border-t border-slate-200">
+            <section className="module-section">
+              <p className="module-label">Realistic support-task scenario</p>
+              <p className="mt-3 leading-7 text-slate-700">{module.scenario}</p>
+              <div className="mt-5 rounded-md bg-[#fff4f4] p-4 text-sm leading-6 text-[#7d2639]">
+                <strong>Role reminder:</strong> collect facts, preserve urgency, and route legal judgment to attorney review.
+              </div>
+            </section>
+            <section className="module-section">
+              <p className="module-label">Decision-boundary checkpoint</p>
+              <AnswerSet legend={module.boundaryQuestion} options={module.boundaryOptions} selected={boundaryChoice} setSelected={setBoundaryChoice} />
+              {boundaryChoice !== null && (
+                <p className={`module-feedback ${boundaryChoice === module.boundaryAnswer ? "is-correct" : "is-review"}`}>
+                  {boundaryChoice === module.boundaryAnswer ? module.boundaryFeedback : "Review the role boundary. The legal conclusion belongs with supervising counsel."}
+                </p>
+              )}
+            </section>
+          </div>
+
+          <div className="module-grid border-t border-slate-200">
+            <section className="module-section">
+              <p className="module-label">Knowledge check</p>
+              <AnswerSet legend={module.knowledgeQuestion} options={module.knowledgeOptions} selected={knowledgeChoice} setSelected={setKnowledgeChoice} />
+              {knowledgeChoice !== null && (
+                <p className={`module-feedback ${knowledgeChoice === module.knowledgeAnswer ? "is-correct" : "is-review"}`}>
+                  {knowledgeChoice === module.knowledgeAnswer ? module.knowledgeFeedback : "Take another look at the workflow goal and try again."}
+                </p>
+              )}
+            </section>
+            <section className="module-section bg-[#eef7f5]">
+              <p className="module-label">Attorney-review escalation note example</p>
+              <p className="mt-3 text-sm leading-7 text-slate-700">{module.escalationNote}</p>
+            </section>
+          </div>
+
+          <div className="module-grid border-t border-slate-200">
+            <section className="module-section">
+              <p className="module-label">Official source anchors</p>
+              <div className="mt-4 grid gap-2">
+                {moduleSources.map((source) => (
+                  <a className="module-source" href={source.url} target="_blank" rel="noreferrer" key={source.title}>
+                    <Library size={16} /> {source.title} <ExternalLink className="ml-auto" size={14} />
+                  </a>
+                ))}
+              </div>
+            </section>
+            <section className="module-section">
+              <p className="module-label">My module notes</p>
+              <label>
+                <span className="sr-only">Notes for chapter {module.chapter}</span>
+                <textarea
+                  className="module-notes mt-4"
+                  value={notes[module.chapter] ?? ""}
+                  onChange={(event) => setNotes((current) => ({ ...current, [module.chapter]: event.target.value }))}
+                  placeholder="Capture questions, follow-up items, and attorney-review reminders."
+                />
+              </label>
+            </section>
+          </div>
+        </article>
       </div>
     </section>
   );
@@ -669,7 +857,7 @@ function ReviewSection() {
             commercial use, certification use, or client-facing training.
           </p>
           <a className="button button-dark mt-7" href={legacyCourseUrl}>
-            <BookOpen size={17} /> Open full legacy course
+            <BookOpen size={17} /> Open Full Course Reader
           </a>
         </div>
         <div className="review-panel">
@@ -738,6 +926,7 @@ function App() {
         <VideoTour />
         <Demo />
         <ChapterDashboard completed={completed} toggleCompleted={toggleCompleted} />
+        <NativeModuleWorkspace completed={completed} toggleCompleted={toggleCompleted} />
         <SourceLocker />
         <ReviewSection />
         <LegalNotice />
