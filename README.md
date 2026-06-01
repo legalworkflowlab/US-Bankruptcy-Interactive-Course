@@ -1,8 +1,10 @@
-# Bankruptcy Workflow Lab
+# Bankruptcy Workflow Readiness Lab
 
-A guided product shell for the U.S. Bankruptcy Interactive Course.
+A supervised workflow-readiness training platform for bankruptcy support teams.
 
-The landing experience includes a silent, captioned 25-second product tour and an interactive 15-minute reviewer demo.
+The landing experience includes a silent, captioned 25-second product tour and a 30-minute buyer demo built around an
+urgent foreclosure-intake workflow. The platform adds buyer-facing training paths, practice-module readiness markers,
+work-product examples, a clickable workflow diagram, and official case-law anchors while preserving the detailed reader.
 
 The front layer follows a guided journey:
 
