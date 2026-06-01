@@ -160,6 +160,12 @@ export const entryPaths = [
     title: "I am new to bankruptcy",
     description: "Begin with the lifecycle, core vocabulary, and safe support-role boundaries.",
     action: "Start foundations",
+    chapter: 1,
+    focus: "Case lifecycle mapping",
+    mission: "Build a first file map from intake through closing.",
+    destination: "chapters",
+    destinationLabel: "Explore foundation chapters",
+    steps: ["Learn the case lifecycle", "Build core vocabulary", "Open the foundation chapter set"],
   },
   {
     id: "workflow",
@@ -167,6 +173,12 @@ export const entryPaths = [
     title: "I want workflow training",
     description: "Move into intake, document review, docket awareness, and attorney-ready handoffs.",
     action: "Open workflow path",
+    chapter: 13,
+    focus: "Attorney-ready file preparation",
+    mission: "Turn a raw intake file into a clean review handoff.",
+    destination: "dashboard",
+    destinationLabel: "Open learner dashboard",
+    steps: ["Collect and index documents", "Track red flags and gaps", "Prepare a neutral attorney-review note"],
   },
   {
     id: "review",
@@ -174,6 +186,12 @@ export const entryPaths = [
     title: "I am reviewing the prototype",
     description: "See the reviewer prompts, source locker, role boundaries, and full legacy course.",
     action: "Review prototype",
+    chapter: 15,
+    focus: "Boundary-aware product review",
+    mission: "Test whether the learner journey supports supervised work.",
+    destination: "review",
+    destinationLabel: "Open reviewer prompts",
+    steps: ["Review role boundaries", "Try the intake simulation", "Capture feedback for the next iteration"],
   },
   {
     id: "demo",
@@ -181,6 +199,12 @@ export const entryPaths = [
     title: "Show me a quick demo",
     description: "Try one realistic intake scenario and practice the correct escalation habit.",
     action: "Launch demo",
+    chapter: 5,
+    focus: "Urgent intake escalation",
+    mission: "Handle one time-sensitive intake without giving legal advice.",
+    destination: "demo",
+    destinationLabel: "Start the 15-minute demo",
+    steps: ["Read the intake facts", "Choose the support-team response", "Reveal the attorney-review note"],
   },
 ];
 
@@ -220,7 +244,7 @@ export const sources = [
 export const reviewerPrompts = [
   "Where did the learner journey feel clear or confusing?",
   "Would this help train supervised bankruptcy support teams?",
-  "Are the legal role boundaries strong enough?",
+  "Are the role boundaries strong enough?",
   "Which practice task should become a simulation next?",
 ];
 
