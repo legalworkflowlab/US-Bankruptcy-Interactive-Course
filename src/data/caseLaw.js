@@ -21,7 +21,7 @@ export const caseLawAnchors = [
     chapters: [4, 11],
     caseName: "Law v. Siegel",
     citation: "571 U.S. 415 (2014)",
-    sourceUrl: "https://www.supremecourt.gov/docket/docketfiles/html/public/12-5196.html",
+    sourceUrl: "https://www.supremecourt.gov/docketfiles/12-5196.htm",
     whyItMatters: "Exemption information needs careful documentation and attorney review.",
     simpleFacts:
       "The case addressed whether a bankruptcy court could use its equitable powers to surcharge a debtor's exempt property.",
@@ -85,7 +85,7 @@ export const caseLawAnchors = [
     chapters: [4],
     caseName: "Ransom v. FIA Card Services, N.A.",
     citation: "562 U.S. 61 (2011)",
-    sourceUrl: "https://www.supremecourt.gov/docket/docketfiles/html/public/09-907.html",
+    sourceUrl: "https://www.supremecourt.gov/docketfiles/09-907.htm",
     whyItMatters: "Means-test inputs must be collected accurately without deciding deductions.",
     simpleFacts:
       "The case considered whether a debtor who owned a vehicle outright could claim a vehicle-ownership expense in the means test.",
@@ -101,7 +101,7 @@ export const caseLawAnchors = [
     chapters: [11],
     caseName: "Stern v. Marshall",
     citation: "564 U.S. 462 (2011)",
-    sourceUrl: "https://www.supremecourt.gov/docket/docketfiles/html/public/10-179.html",
+    sourceUrl: "https://www.supremecourt.gov/docketfiles/10-179.htm",
     whyItMatters: "Litigation and court-authority questions belong with counsel.",
     simpleFacts:
       "The case considered the constitutional authority of a bankruptcy court to enter a final judgment on a state-law counterclaim.",
