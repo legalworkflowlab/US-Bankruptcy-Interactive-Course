@@ -2,6 +2,8 @@
 
 A guided product shell for the U.S. Bankruptcy Interactive Course.
 
+The landing experience includes a silent, captioned 25-second product tour and an interactive 15-minute reviewer demo.
+
 ## Development
 
 ```bash

@@ -38,6 +38,9 @@ import {
 const basePath = import.meta.env.BASE_URL;
 const legacyCourseUrl = `${basePath}legacy-course/index.html`;
 const backgroundUrl = `${basePath}assets/course-workflow-background.bmp`;
+const demoVideoUrl = `${basePath}assets/video/bankruptcy-workflow-demo.mp4`;
+const demoVideoPosterUrl = `${basePath}assets/video/bankruptcy-workflow-demo-poster.png`;
+const demoVideoCaptionsUrl = `${basePath}assets/video/bankruptcy-workflow-demo-captions.vtt`;
 
 const pathIcons = {
   new: Compass,
@@ -163,8 +166,8 @@ function Hero({ nextChapter }) {
             <a className="button button-accent" href="#paths">
               Choose your path <ArrowRight size={17} />
             </a>
-            <a className="button button-ghost-light" href="#demo">
-              <PlayCircle size={17} /> Try the 15-minute demo
+            <a className="button button-ghost-light" href="#video-tour">
+              <PlayCircle size={17} /> Watch the 25-second tour
             </a>
           </div>
           <div className="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-sm text-slate-200">
@@ -218,6 +221,52 @@ function Hero({ nextChapter }) {
             </div>
           </div>
         </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function VideoTour() {
+  return (
+    <section id="video-tour" className="section scroll-mt-28 bg-white">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="video-tour-grid">
+          <div>
+            <p className="kicker">Quick product tour</p>
+            <h2 className="mt-3 text-4xl font-semibold leading-tight text-slate-900">See the learning route in 25 seconds.</h2>
+            <p className="mt-4 max-w-xl leading-7 text-slate-600">
+              Watch the short walkthrough for a fast orientation, then open the interactive demo to practice the
+              attorney-review handoff yourself.
+            </p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <a className="button button-dark" href="#demo">
+                <PlayCircle size={17} /> Try the interactive demo
+              </a>
+              <a className="button button-light" href={legacyCourseUrl}>
+                <BookOpen size={17} /> Open full course
+              </a>
+            </div>
+            <p className="mt-5 flex items-center gap-2 text-sm font-bold text-slate-500">
+              <BadgeCheck size={16} className="text-teal-700" /> Silent walkthrough with on-screen captions
+            </p>
+          </div>
+          <div className="video-frame">
+            <video
+              aria-label="Bankruptcy Workflow Lab product tour"
+              className="block w-full"
+              controls
+              muted
+              playsInline
+              poster={demoVideoPosterUrl}
+              preload="metadata"
+            >
+              <source src={demoVideoUrl} type="video/mp4" />
+              <track kind="captions" src={demoVideoCaptionsUrl} srcLang="en" label="English" default />
+              Your browser does not support the embedded video. Open the interactive demo below for the guided
+              experience.
+            </video>
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -601,6 +650,7 @@ function App() {
       <main>
         <Hero nextChapter={nextChapter} />
         <EntryPaths />
+        <VideoTour />
         <Dashboard learnerName={learnerName} setLearnerName={setLearnerName} completed={completed} toggleCompleted={toggleCompleted} nextChapter={nextChapter} />
         <Demo />
         <ChapterDashboard completed={completed} toggleCompleted={toggleCompleted} />
